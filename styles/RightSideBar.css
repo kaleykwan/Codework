@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter&family=Jost:wght@700&family=Lexend:wght@400;500&family=Montserrat:wght@500&family=Roboto:wght@900&display=swap');
+
+.right-side-bar {
+    display: flex;
+    flex-flow: column;
+    width: 30vw;
+  }
+
+/* Loops For You */
+
+.loops-for-you {
+    display: flex;
+    flex-flow: column;
+    padding: 15px;
+    font-family: 'Helvetica Neue', sans-serif;
+    color: white;
+    background-color: #3c384a5e;
+    margin: 15px;
+    border-radius: 25px;
+  }
+
+.loops-for-you-text {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Lexend', sans-serif;
+    padding-left: 4px;
+    margin: 0px;
+}
+
+.loops-for-you-suggestion-list {
+    display: flex;
+    flex-flow: column;
+}
+
+.loop {
+  background: #4b465c5e;
+  padding: 9px;
+  margin-bottom: 4px;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Lexend', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Codework With Me */
+
+.codework-with-me {
+    background-color: #3c384a5e;
+    margin: 15px;
+    margin-top: 0px;
+    border-radius: 25px;
+    display: flex;
+    flex-flow: column;
+    padding: 15px;
+    font-family: 'Lexend', sans-serif;
+    color: white;
+  }
+
+.codework-with-me-text {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Lexend', sans-serif;
+    padding-left: 4px;
+    padding-bottom: 13px;
+    margin: 0px;
+}
+
+.codework-with-me-suggestion-list {
+    display: flex;
+    flex-flow: column;
+  }
+
+.suggested-user-box {
+  display: flex;
+  flex-flow: row;
+  background: #4b465c5e;
+  justify-content: space-between;
+  padding: 8px;
+  margin-bottom: 13px;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Lexend', sans-serif;
+  font-size: 14px;
+  border: none;
+}
+
+.suggested-user-info {
+  display: flex;
+  flex-flow: row;
+  font-weight: 500;
+  gap: 10px;
+}
+
+.suggested-user-info-text {
+  padding-top: 8px;
+}
+
+.suggested-user-info-name {
+  margin: 0px;
+  margin-bottom: 2px;
+}
+
+.suggested-user-info-username {
+    color: silver;
+    margin: 0px;
+}
+
+.suggested-user-avatar {
+    border-radius: 50%;
+}

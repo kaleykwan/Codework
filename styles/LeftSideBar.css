@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter&family=Jost:wght@700&family=Lexend:wght@400;500&family=Montserrat:wght@500&family=Roboto:wght@900&display=swap');
+
+.left-side-bar {
+    display: flex;
+    flex-flow: column;
+    width: 25vw;
+}
+
+/* Profile Thumbnail */
+
+.profile-thumbnail {
+    display: flex;
+    flex-flow: column;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px;
+    background-color: #3c384a5e;
+    border-radius: 25px;
+    font-family: 'Lexend', sans-serif;
+  }
+
+.profile-thumbnail-user-info {
+  display: flex;
+  flex-flow: column;
+  gap: 6px;
+  margin: 15px;
+}
+
+.profile-thumbnail-user-info-name {
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    font-size: 17px;
+    margin: 0px;
+}
+
+.profile-thumbnail-user-info-username {
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    font-weight: 400;
+    margin: 0px;
+  }
+
+.profile-thumbnail-user-stats {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+.profile-thumbnail-user-stats-box {
+    background-color: #4b465c5e;
+    padding: 15px;
+    border-radius: 20px;
+    color: white;
+    font-size: 13px;
+  }
+
+.profile-thumbnail-user-stats-count {
+  text-align: center;
+  font-weight: 500;
+  font-size: 13px;
+  margin: 0px;
+}
+
+.profile-thumbnail-user-stats-label {
+    text-align: center;
+    font-weight: 500;
+    font-size: 13px;
+    margin: 0px;
+  }
+
+.profile-thumbnail-link-box {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  margin-bottom: 15px;
+  gap: 6px;
+}
+
+.profile-thumbnail-link-text {
+    font-size: 14px;
+    transform: translate(0px, -5px);
+    color: white;
+}
+
+/* Navigation Bar */
+
+.navbar {
+    display: flex;
+    flex-flow: column;
+    padding-top: 4px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 15px;
+    margin-top: 0px;
+    background-color: #3c384a5e;
+    border-radius: 25px;
+    font-family: 'Lexend', sans-serif;
+  }
+
+.option {
+  display: flex;
+  flex-flow: column;
+  background: #4b465c5e;
+  padding: 8px;
+  margin-bottom: 15px;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Lexend', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}

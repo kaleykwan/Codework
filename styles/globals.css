@@ -24,3 +24,9 @@ a {
     background: black;
   }
 }
+
+.homepage {
+  display: flex;
+  flex-flow: row;
+  background: #22202e;
+}
