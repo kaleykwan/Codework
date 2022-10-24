@@ -31,15 +31,29 @@ function SuggestedUser({ name, username, avatarURL }: Author) {
 
 let users: Author[] = [
   {
-    name: "Kaley",
+    name: "Kaley Kwan",
     username: "@kaley",
     following: 0,
     followers: 0,
     avatarURL: "string",
   },
   {
-    name: "Emma",
+    name: "Emma Kwan",
     username: "@emma",
+    following: 0,
+    followers: 0,
+    avatarURL: "string",
+  },
+  {
+    name: "Cuby Ng",
+    username: "@cuby",
+    following: 0,
+    followers: 0,
+    avatarURL: "string",
+  },
+  {
+    name: "Ed Kwan",
+    username: "@ed",
     following: 0,
     followers: 0,
     avatarURL: "string",

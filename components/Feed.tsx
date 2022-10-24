@@ -1,6 +1,19 @@
 import Author from "./authorInterface";
-import PostInterface from "./postInterface";
+import React, { useState, useEffect } from "react";
+import { FBPost, inflatePost, getFBPost, PostInterface } from "./postInterface";
 import Post from "./Post";
+import MakePost from "./MakePost";
+import SearchBar from "./SearchBar";
+import { firestore } from "../firebase/clientApp";
+import {
+  collection,
+  query,
+  limit,
+  getDocs,
+  QueryDocumentSnapshot,
+  getDoc,
+  DocumentData,
+} from "firebase/firestore";
 
 let authorKaley: Author = {
   name: "Kaley",
@@ -10,44 +23,62 @@ let authorKaley: Author = {
   avatarURL: "avatar",
 };
 
-let posts: PostInterface[] = [
-  {
-    text: "just posted on my web3 blog! Here's a sneak peak: If we want to successfully onboard the next one million people into web3, then I believe we need to develop more opinionated curriculums, scope down the resources we deem necessary for newbies, and better understand who is curious about this space and what obstacles they face.",
-    date: new Date(),
-    author: authorKaley,
-    likes: 0,
-    loop: "web3",
-  },
-  {
-    text: "got accepted to launchpad at purdue! my project idea is a social networking app geared toward women in tech.",
-    date: new Date(),
-    author: authorKaley,
-    likes: 0,
-    loop: "internship",
-  },
-  {
-    text: "Google STEP applications close end of October!",
-    date: new Date(),
-    author: authorKaley,
-    likes: 0,
-    loop: "internship",
-  },
-  {
-    text: "Sample post",
-    date: new Date(),
-    author: authorKaley,
-    likes: 0,
-    loop: "internship",
-  },
-];
+async function getData() {
+  const q = query(collection(firestore, "posts"), limit(5));
 
-const postList = posts.map((post) => {
-  return <div><Post {...post} /></div>;
-});
+  const querySnapshot = await getDocs(q);
+  const posts = querySnapshot.docs.map((docData) => docData.ref.withConverter(postConverter));
+  const FBposts = posts.map((post) => getFBPost(post));
+  const returnedFBPosts = await Promise.all(FBposts);
+  const inflatedPosts = returnedFBPosts.map(
+    async (post) => await inflatePost(post)
+  );
+  const returnedInflatedPosts = await Promise.all(inflatedPosts);
+  return returnedInflatedPosts;
+}
+
+const postConverter = {
+    toFirestore(post: FBPost): DocumentData {
+      return {
+        text: post.text,
+        author: post.author,
+        date: post.date,
+        likes: post.likes,
+      };
+    },
+    fromFirestore(snapshot: QueryDocumentSnapshot<FBPost>): FBPost {
+      const data = snapshot.data();
+      return { ...data};
+    },
+}
+
 
 export default function Feed() {
+  const [data, setData] = useState<PostInterface[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const postInterfaces = await getData();
+      setData(postInterfaces);
+    };
+    fetchPosts();
+  }, []);
+
+  const postList = data.map((postInterface) => {
+    return (
+      <div>
+        <Post {...postInterface} />
+      </div>
+    );
+  });
   return (
     <div className="feed">
+      <div>
+        <SearchBar />
+      </div>
+      <div className="feed-make-post">
+        <MakePost />
+      </div>
       <div className="feed-posts">{postList}</div>
     </div>
   );

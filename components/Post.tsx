@@ -28,7 +28,7 @@ export default function Post({ text, date, author, loop }: PostInterface) {
             <p className="post-header-text-name">{author.name}</p>
             <p className="post-header-text-username">{author.username}</p>
             <CircleIcon className="post-header-text-circle" sx={{ fontSize: "3px" }} />
-            <p className="post-header-text-date">{date.getDate.toString()}</p>
+            <p className="post-header-text-date">{date.toString()}</p>
           </div>
           <div>
             <p className="post-content">{text}</p>
