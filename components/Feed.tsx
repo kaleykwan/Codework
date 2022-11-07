@@ -13,21 +13,16 @@ import {
   QueryDocumentSnapshot,
   getDoc,
   DocumentData,
+  orderBy,
 } from "firebase/firestore";
 
-let authorKaley: Author = {
-  name: "Kaley",
-  username: "@kaley",
-  following: 0,
-  followers: 0,
-  avatarURL: "avatar",
-};
-
 async function getData() {
-  const q = query(collection(firestore, "posts"), limit(5));
+  const q = query(collection(firestore, "posts"), orderBy("timestamp", "desc"));
 
   const querySnapshot = await getDocs(q);
-  const posts = querySnapshot.docs.map((docData) => docData.ref.withConverter(postConverter));
+  const posts = querySnapshot.docs.map((docData) =>
+    docData.ref.withConverter(postConverter)
+  );
   const FBposts = posts.map((post) => getFBPost(post));
   const returnedFBPosts = await Promise.all(FBposts);
   const inflatedPosts = returnedFBPosts.map(
@@ -38,20 +33,19 @@ async function getData() {
 }
 
 const postConverter = {
-    toFirestore(post: FBPost): DocumentData {
-      return {
-        text: post.text,
-        author: post.author,
-        date: post.date,
-        likes: post.likes,
-      };
-    },
-    fromFirestore(snapshot: QueryDocumentSnapshot<FBPost>): FBPost {
-      const data = snapshot.data();
-      return { ...data};
-    },
-}
-
+  toFirestore(post: FBPost): DocumentData {
+    return {
+      text: post.text,
+      author: post.author,
+      date: post.timestamp,
+      likes: post.likes,
+    };
+  },
+  fromFirestore(snapshot: QueryDocumentSnapshot<FBPost>): FBPost {
+    const data = snapshot.data();
+    return { ...data };
+  },
+};
 
 export default function Feed() {
   const [data, setData] = useState<PostInterface[]>([]);

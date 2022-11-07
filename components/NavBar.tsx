@@ -36,6 +36,37 @@ const navBarOptions = options.map((option) => {
   return <Option {...option} />;
 });
 
+let profileOptions: OptionInterface[] = [
+  {
+    link: "/",
+    name: "Home",
+  },
+  {
+    link: "https://nextjs.org",
+    name: "Notifications",
+  },
+  {
+    link: "https://nextjs.org",
+    name: "Messages",
+  },
+  {
+    link: "https://nextjs.org",
+    name: "Accessibility",
+  },
+];
+
+const profileNavBarOptions = profileOptions.map((option) => {
+  return <Option {...option} />;
+});
+
+export function ProfileNavBar() {
+  return (
+    <div className="navbar">
+      <div className="navbar-options">{profileNavBarOptions}</div>
+    </div>
+  );
+}
+
 export default function NavBar() {
   return (
     <div className="navbar">

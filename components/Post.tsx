@@ -4,7 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import InsertCommentRoundedIcon from "@mui/icons-material/InsertCommentRounded";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
-import CircleIcon from '@mui/icons-material/Circle';
+import CircleIcon from "@mui/icons-material/Circle";
 import ProfilePic from "../public/profilepic.png";
 import Link from "next/link";
 import { autocompleteClasses } from "@mui/material";
@@ -27,8 +27,11 @@ export default function Post({ text, date, author, loop }: PostInterface) {
           <div className="post-header-text-user-info">
             <p className="post-header-text-name">{author.name}</p>
             <p className="post-header-text-username">{author.username}</p>
-            <CircleIcon className="post-header-text-circle" sx={{ fontSize: "3px" }} />
-            <p className="post-header-text-date">{date.toString()}</p>
+            <CircleIcon
+              className="post-header-text-circle"
+              sx={{ fontSize: "3px" }}
+            />
+            <p className="post-header-text-date">{date.toLocaleDateString()}</p>
           </div>
           <div>
             <p className="post-content">{text}</p>
