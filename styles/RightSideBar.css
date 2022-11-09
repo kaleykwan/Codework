@@ -35,7 +35,7 @@
 .loop {
   background: #4b465c5e;
   padding: 9px;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
   border-radius: 15px;
   color: white;
   font-family: 'Lexend', sans-serif;
@@ -54,6 +54,7 @@
     display: flex;
     flex-flow: column;
     padding: 15px;
+    padding-bottom: 0px;
     font-family: 'Lexend', sans-serif;
     color: white;
   }

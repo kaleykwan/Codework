@@ -22,6 +22,14 @@ let loops: LoopInterface[] = [
     link: "https://nextjs.org",
     name: "web dev",
   },
+  {
+    link: "https://nextjs.org",
+    name: "web3",
+  },
+  {
+    link: "https://nextjs.org",
+    name: "Purdue",
+  },
 ];
 
 const loopSuggestions = loops.map((loop) => {
