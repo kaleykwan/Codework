@@ -1,4 +1,3 @@
-import Author from "./authorInterface";
 import React, { useState, useEffect } from "react";
 import { FBPost, inflatePost, getFBPost, PostInterface } from "./postInterface";
 import Post from "./Post";
@@ -11,26 +10,10 @@ import {
   limit,
   getDocs,
   QueryDocumentSnapshot,
-  getDoc,
   DocumentData,
   orderBy,
+  onSnapshot,
 } from "firebase/firestore";
-
-async function getData() {
-  const q = query(collection(firestore, "posts"), orderBy("timestamp", "desc"));
-
-  const querySnapshot = await getDocs(q);
-  const posts = querySnapshot.docs.map((docData) =>
-    docData.ref.withConverter(postConverter)
-  );
-  const FBposts = posts.map((post) => getFBPost(post));
-  const returnedFBPosts = await Promise.all(FBposts);
-  const inflatedPosts = returnedFBPosts.map(
-    async (post) => await inflatePost(post)
-  );
-  const returnedInflatedPosts = await Promise.all(inflatedPosts);
-  return returnedInflatedPosts;
-}
 
 const postConverter = {
   toFirestore(post: FBPost): DocumentData {
@@ -49,22 +32,47 @@ const postConverter = {
 
 export default function Feed() {
   const [data, setData] = useState<PostInterface[]>([]);
+  const q = query(collection(firestore, "posts"), orderBy("timestamp", "desc"));
+  const [FBposts, setFBposts] = useState<Promise<FBPost>[]>(
+    []
+  );
+  const [InflatedPosts, setInflatedPosts] = useState<
+    PostInterface[]
+  >([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const postsUpdated = querySnapshot.docs.map((docData) =>
+          docData.ref.withConverter(postConverter)
+        );
+        const FBposts = postsUpdated.map((post) => getFBPost(post));
+        setFBposts(FBposts);
+      });
+
+      /* const querySnapshot = await getDocs(q);
+      const posts = querySnapshot.docs.map((docData) =>
+        docData.ref.withConverter(postConverter)
+      ); */
+      const returnedFBPosts = await Promise.all(FBposts!);
+      const inflatedPosts = returnedFBPosts.map(
+        async (post) => await inflatePost(post)
+      );
+      const returnedInflatedPosts = await Promise.all(inflatedPosts);
+      setInflatedPosts(returnedInflatedPosts);
+      return () => unsubscribe();
+    };
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const postInterfaces = await getData();
-      setData(postInterfaces);
+      const postInterfaces = InflatedPosts;
+      setData(postInterfaces!);
     };
     fetchPosts();
-  }, []);
+  }, [InflatedPosts]);
 
-  const postList = data.map((postInterface) => {
-    return (
-      <div>
-        <Post {...postInterface} />
-      </div>
-    );
-  });
   return (
     <div className="feed">
       <div>
@@ -73,7 +81,15 @@ export default function Feed() {
       <div className="feed-make-post">
         <MakePost />
       </div>
-      <div className="feed-posts">{postList}</div>
+      <div className="feed-posts">
+        {data.map((postInterface) => {
+          return (
+            <div>
+              <Post {...postInterface} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
