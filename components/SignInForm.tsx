@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Input } from "@mui/material";
 import Link from "next/link";
+import { firestore, app } from "../firebase/clientApp";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { firestore } from "../firebase/clientApp";
 import { collection, setDoc, doc } from "firebase/firestore";
 
 function SignInForm() {
@@ -11,7 +11,7 @@ function SignInForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const auth = getAuth();
+  const auth = getAuth(app);
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in

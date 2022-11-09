@@ -4,20 +4,27 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { firestore } from "../firebase/clientApp"; // firestore instance
 import { collection, doc, getDoc, DocumentReference } from "firebase/firestore";
+import { useDocument } from "react-firebase-hooks/firestore";
+import React, { useState, useEffect } from "react";
+import { useSlotProps } from "@mui/base";
 
 export default function ProfileThumbnail(props: Author) {
-  let docRef: DocumentReference<Author>;
-  let docSnap;
+  /*let docRef: DocumentReference<Author>;*/
+  const [docRef, setDocRef] = useState<DocumentReference | undefined>(
+    undefined
+  );
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-      docRef = doc(firestore, "users", uid);
+      setDocRef(doc(firestore, "users", uid));
     } else {
       // User is signed out
       // ...
     }
   });
+  /*const [snapshot, loading, error] = useDocument(docRef!);
+  const data = snapshot?.data(); */
 
   return (
     <div className="profile-thumbnail">

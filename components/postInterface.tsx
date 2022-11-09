@@ -37,7 +37,6 @@ export const inflatePost = async (fbPost: FBPost): Promise<PostInterface> => {
   const authorDocumentData = await getDoc(docRef);
   const myAuthor = authorDocumentData.data()!;
   const date = fbPost.timestamp;
-  console.log(`date: ${date}`);
   const formattedDate = date && date.toDate();
   return {
     ...fbPost,

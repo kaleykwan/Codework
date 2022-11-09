@@ -31,7 +31,9 @@ export default function Post({ text, date, author, loop }: PostInterface) {
               className="post-header-text-circle"
               sx={{ fontSize: "3px" }}
             />
-            <p className="post-header-text-date">{date.toLocaleDateString()}</p>
+            <p className="post-header-text-date">
+              {/*date.toLocaleDateString()*/}
+            </p>
           </div>
           <div>
             <p className="post-content">{text}</p>

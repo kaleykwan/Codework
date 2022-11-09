@@ -69,6 +69,7 @@ export default function MakePost() {
             <TextareaAutosize
               className="make-post-insert"
               placeholder="Say something!"
+              value={content}
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
