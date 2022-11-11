@@ -55,7 +55,6 @@ export default function Feed() {
         async (post) => await inflatePost(post)
       );
       const returnedInflatedPosts = await Promise.all(inflatedPosts);
-      console.log(returnedInflatedPosts[0].author.name);
       setInflatedPosts(returnedInflatedPosts);
     };
     fetchPosts();

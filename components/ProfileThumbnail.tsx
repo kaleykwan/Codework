@@ -23,27 +23,27 @@ export default function ProfileThumbnail(props: Author) {
       // ...
     }
   });
-  /*const [snapshot, loading, error] = useDocument(docRef!);
-  const data = snapshot?.data(); */
+  const [snapshot, loading, error] = useDocument(docRef!);
+  const data = snapshot?.data(); 
 
   return (
     <div className="profile-thumbnail">
       <div className="profile-thumbnail-user-info">
-        <h1 className="profile-thumbnail-user-info-name">{props.name}</h1>
+        <h1 className="profile-thumbnail-user-info-name">{data?.name}</h1>
         <h1 className="profile-thumbnail-user-info-username">
-          {props.username}
+          {data?.username}
         </h1>
       </div>
       <div className="profile-thumbnail-user-stats">
         <div className="profile-thumbnail-user-stats-box">
           <h1 className="profile-thumbnail-user-stats-count">
-            {props.followers}
+            {data?.followers}
           </h1>
           <h1 className="profile-thumbnail-user-stats-label">Followers</h1>
         </div>
         <div className="profile-thumbnail-user-stats-box">
           <h1 className="profile-thumbnail-user-stats-count">
-            {props.following}
+            {data?.following}
           </h1>
           <h1 className="profile-thumbnail-user-stats-label">Following</h1>
         </div>

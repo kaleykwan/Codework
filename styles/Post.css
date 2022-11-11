@@ -14,10 +14,13 @@
   background-color: #3c384aa9;
   width: 45vw;
   border-radius: 25px;
-  outline: none;
-  border: none;
+  border-style: none;
   margin-top: 15px;
   color: white;
+}
+
+.search-bar:focus {
+  outline: none;
 }
 
 .make-post {

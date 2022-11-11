@@ -10,6 +10,10 @@ import Link from "next/link";
 import { autocompleteClasses } from "@mui/material";
 
 export default function Post({ text, date, author, loop }: PostInterface) {
+  const handleLike = () => {
+
+  }
+
   return (
     <div className="post">
       <div className="post-header">
@@ -32,7 +36,7 @@ export default function Post({ text, date, author, loop }: PostInterface) {
               sx={{ fontSize: "3px" }}
             />
             <p className="post-header-text-date">
-              {/*date.toLocaleDateString()*/}
+              {date.toLocaleDateString()}
             </p>
           </div>
           <div>
@@ -48,7 +52,7 @@ export default function Post({ text, date, author, loop }: PostInterface) {
           <IconButton className="post-footer-actions-comment">
             <InsertCommentRoundedIcon sx={{ color: "#FFFFFF" }} />
           </IconButton>
-          <IconButton className="post-footer-actions-like">
+          <IconButton className="post-footer-actions-like" onClick={handleLike}>
             <FavoriteBorderIcon sx={{ color: "#FFFFFF" }} />
           </IconButton>
           <IconButton className="post-footer-actions-share">
