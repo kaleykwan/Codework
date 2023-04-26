@@ -31,7 +31,7 @@ export default function ProfileThumbnail(props: Author) {
       <div className="profile-thumbnail-user-info">
         <h1 className="profile-thumbnail-user-info-name">{data?.name}</h1>
         <h1 className="profile-thumbnail-user-info-username">
-          {data?.username}
+          @{data?.username}
         </h1>
       </div>
       <div className="profile-thumbnail-user-stats">

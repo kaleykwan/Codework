@@ -6,8 +6,6 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { collection, setDoc, doc } from "firebase/firestore";
 
 function SignInForm() {
-  const [name, setName] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -16,6 +14,7 @@ function SignInForm() {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
+      console.log("Logged in!");
       // ...
     })
     .catch((error) => {

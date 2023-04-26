@@ -30,13 +30,13 @@ export default function Post({ text, date, author, loop }: PostInterface) {
         <div className="post-header-text">
           <div className="post-header-text-user-info">
             <p className="post-header-text-name">{author.name}</p>
-            <p className="post-header-text-username">{author.username}</p>
+            <p className="post-header-text-username">@{author.username}</p>
             <CircleIcon
               className="post-header-text-circle"
               sx={{ fontSize: "3px" }}
             />
             <p className="post-header-text-date">
-              {date.toLocaleDateString()}
+              {/*date.toLocaleDateString()*/}
             </p>
           </div>
           <div>

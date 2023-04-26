@@ -4,6 +4,7 @@ import LoopsForYou from "../components/LoopsForYou";
 import CodeworkWithMe from "../components/CodeworkWithMe";
 import ProfileHeader from "../components/ProfileHeader";
 import Author from "../components/authorInterface";
+import Feed from "../components/MyProfileFeed";
 
 let authorKaley: Author = {
     name: "Kaley",
@@ -12,7 +13,7 @@ let authorKaley: Author = {
     major: "computer science",
     following: 0,
     followers: 0,
-    bio: "i am a swiftie. stream midnights."
+    bio: "stream midnights"
 }
 const MyProfile: NextPage = () => {
   return (
@@ -22,6 +23,7 @@ const MyProfile: NextPage = () => {
       </div>
       <div className="profile-center">
         <ProfileHeader {...authorKaley} />
+        <Feed />
       </div>
       <div className="profile-right-sidebar">
         <LoopsForYou />

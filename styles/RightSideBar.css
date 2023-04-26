@@ -12,7 +12,7 @@
     display: flex;
     flex-flow: column;
     padding: 15px;
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
     background-color: #3c384a5e;
     margin: 15px;
@@ -22,7 +22,7 @@
 .loops-for-you-text {
     font-size: 20px;
     font-weight: 600;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-left: 4px;
     margin: 0px;
 }
@@ -38,7 +38,7 @@
   margin-bottom: 3px;
   border-radius: 15px;
   color: white;
-  font-family: 'Lexend', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 15px;
   font-weight: 500;
   text-align: left;
@@ -55,14 +55,14 @@
     flex-flow: column;
     padding: 15px;
     padding-bottom: 0px;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: white;
   }
 
 .codework-with-me-text {
     font-size: 20px;
     font-weight: 600;
-    font-family: 'Lexend', sans-serif;
+    font-family: 'Roboto', sans-serif;
     padding-left: 4px;
     padding-bottom: 13px;
     margin: 0px;
@@ -82,7 +82,7 @@
   margin-bottom: 13px;
   border-radius: 15px;
   color: white;
-  font-family: 'Lexend', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   border: none;
 }
