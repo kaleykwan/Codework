@@ -1,3 +1,7 @@
+Codework: a social networking platform for women in tech
+
+![](https://github.com/kaleykwan/Codework/blob/main/public/Codework%20Feed%20Gif.gif)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
